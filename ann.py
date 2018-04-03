@@ -45,6 +45,32 @@ X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 
 
+# Part 2 - Now let's make the ANN!
+
+# Importing the Keras libraries and packages
+# fix tensorflow packaje error
+# https://github.com/tensorflow/tensorflow/issues/5478
+import keras
+
+# Part 3 - Making the predictions and evaluating the model
+
+# Predicting the Test set results
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
