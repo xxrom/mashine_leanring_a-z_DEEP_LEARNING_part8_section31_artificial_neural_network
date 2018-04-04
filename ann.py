@@ -56,6 +56,9 @@ import keras
 from keras.models import Sequential # init neural network
 from keras.layers import Dense # for layers creations
 
+# Initialising the ANN
+classifier = Sequential()
+
 # Part 3 - Making the predictions and evaluating the model
 
 # Predicting the Test set results
