@@ -50,7 +50,11 @@ X_test = sc_X.transform(X_test)
 # Importing the Keras libraries and packages
 # fix tensorflow packaje error
 # https://github.com/tensorflow/tensorflow/issues/5478
+# pip install tensorflow
+# conda list
 import keras
+from keras.models import Sequential # init neural network
+from keras.layers import Dense # for layers creations
 
 # Part 3 - Making the predictions and evaluating the model
 
