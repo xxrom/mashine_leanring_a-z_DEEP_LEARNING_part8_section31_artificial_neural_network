@@ -61,11 +61,34 @@ classifier = Sequential()
 
 # Adding the input layer and the first hidden layer
 classifier.add(Dense(
-    6, # количество нейронов в скрытом слое
+    6, # количество нейронов в скрытом слое/ не артист= (inputs + outpust)/2
     input_dim = 11, # количество входов в нейронку (только в первом слое)
     kernel_initializer = 'uniform', # инициализация весов начальная близи 0
     activation = 'relu' # функция активации будет _/ , хорошо в скрытом слое
   ))
+
+# Adding the second hidden layer
+classifier.add(Dense(
+    6, # количество нейронов в скрытом слое
+    kernel_initializer = 'uniform', # инициализация весов начальная близи 0
+    activation = 'relu' # функция активации будет _/ , хорошо в скрытом слое
+  ))
+
+# Adding the output layer
+classifier.add(Dense(
+    1, # количество котегорий на выходе (1 = 2, 3 = 3, n = n)
+    kernel_initializer = 'uniform', # инициализация весов начальная близи 0
+    activation = 'sigmoid' # функция активации будет сигмоида= получим % out
+    # если на выходе больше 2 категорий, то нужно выбрать softmax функцию
+  ))
+
+# Compilint the ANN градиентный спуск применяем
+classifier.compile(
+    optimizer = 'adam', # метод оптимизации
+    loss = 'binary_crossentropy', # cadecorical_crossentropy >2
+    metrics = ['accuracy'] # метод измерения качества модели
+  )
+
 
 # Part 3 - Making the predictions and evaluating the model
 
