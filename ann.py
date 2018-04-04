@@ -59,6 +59,14 @@ from keras.layers import Dense # for layers creations
 # Initialising the ANN
 classifier = Sequential()
 
+# Adding the input layer and the first hidden layer
+classifier.add(Dense(
+    6, # количество нейронов в скрытом слое
+    input_dim = 11, # количество входов в нейронку (только в первом слое)
+    kernel_initializer = 'uniform', # инициализация весов начальная близи 0
+    activation = 'relu' # функция активации будет _/ , хорошо в скрытом слое
+  ))
+
 # Part 3 - Making the predictions and evaluating the model
 
 # Predicting the Test set results
