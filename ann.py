@@ -63,21 +63,21 @@ classifier = Sequential()
 classifier.add(Dense(
     6, # количество нейронов в скрытом слое/ не артист= (inputs + outpust)/2
     input_dim = 11, # количество входов в нейронку (только в первом слое)
-    kernel_initializer = 'uniform', # инициализация весов начальная близи 0
+    kernel_initializer = 'random_uniform', # инициализация весов начальная близи 0
     activation = 'relu' # функция активации будет _/ , хорошо в скрытом слое
   ))
 
 # Adding the second hidden layer
 classifier.add(Dense(
     6, # количество нейронов в скрытом слое
-    kernel_initializer = 'uniform', # инициализация весов начальная близи 0
+    kernel_initializer = 'random_uniform', # инициализация весов начальная близи 0
     activation = 'relu' # функция активации будет _/ , хорошо в скрытом слое
   ))
 
 # Adding the output layer
 classifier.add(Dense(
     1, # количество котегорий на выходе (1 = 2, 3 = 3, n = n)
-    kernel_initializer = 'uniform', # инициализация весов начальная близи 0
+    kernel_initializer = 'random_uniform', # инициализация весов начальная близи 0
     activation = 'sigmoid' # функция активации будет сигмоида= получим % out
     # если на выходе больше 2 категорий, то нужно выбрать softmax функцию
   ))
@@ -89,13 +89,23 @@ classifier.compile(
     metrics = ['accuracy'] # метод измерения качества модели
   )
 
+# Fitting the ANN to the Training set
+classifier.fit(X_train, y_train,
+               batch_size = 10, # после скольких будет коррекция весов
+               nb_epoch = 100 # количество эпох
+               )
 
 # Part 3 - Making the predictions and evaluating the model
 
 # Predicting the Test set results
+y_pred = classifier.predict(X_test)
+y_pred = (y_pred > 0.5) # if (x > 0.5) true else false
 
-
-
+# Making the confusion Matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+# 1 batch_size = 10, nb_epoch = 100
+# (1515 + 207)/2000 = 0.861 accuracy really good =)
 
 
 
